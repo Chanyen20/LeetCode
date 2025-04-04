@@ -4,15 +4,9 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         number_of_zero = nums.count(0)
-        answer_list = []
 
-        for i in range(len(nums)):
-            if nums[i] != 0:
-                answer_list.append(nums[i])
-            
-        answer_list.extend([0] * number_of_zero)
+        # only retain none zero
+        nums[:] = [num for num in nums if num != 0]
 
-        for i in range(len(nums)):
-            nums[i] = answer_list[i]
-
+        nums.extend([0] * number_of_zero)
         
