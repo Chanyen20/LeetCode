@@ -3,13 +3,16 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        number_of_zero = nums.count(0)
+        left_pointer = 0
 
-        # only retain none zero
-        nums[:] = [num for num in nums if num != 0]
+        for num in nums:
+            if num != 0:
+                nums[left_pointer] = num
+                left_pointer += 1
+        
+        for i in range(left_pointer, len(nums)):
+            nums[i] = 0
 
-        nums.extend([0] * number_of_zero)
-
-        # time complexity: O(n) -> .count(0) operation has a time complexity of O(n)
-        # space complexity: O(n) -> use additional list
+        # time complexity: O(n) -> Only walked through the list once
+        # space complexity: O(1) -> No extra list is used
         
