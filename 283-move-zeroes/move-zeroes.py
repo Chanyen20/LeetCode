@@ -9,4 +9,7 @@ class Solution:
         nums[:] = [num for num in nums if num != 0]
 
         nums.extend([0] * number_of_zero)
+
+        # time complexity: O(n) -> .count(0) operation has a time complexity of O(n)
+        # space complexity: O(n) -> use additional list
         
