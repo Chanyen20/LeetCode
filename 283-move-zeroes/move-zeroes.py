@@ -3,16 +3,8 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        left_pointer = 0
-
-        for num in nums:
-            if num != 0:
-                nums[left_pointer] = num
-                left_pointer += 1
-        
-        for i in range(left_pointer, len(nums)):
-            nums[i] = 0
-
-        # time complexity: O(n) -> Only walked through the list once
-        # space complexity: O(1) -> No extra list is used
-        
+        last_not_zero = 0
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[last_not_zero], nums[i] = nums[i], nums[last_not_zero]
+                last_not_zero += 1
