@@ -1,7 +1,7 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
-        if nums is None:
-            return 0
+        # if nums is None:
+        #     return 0
 
         nums.sort()    
         # ord_nums = sorted(nums)
