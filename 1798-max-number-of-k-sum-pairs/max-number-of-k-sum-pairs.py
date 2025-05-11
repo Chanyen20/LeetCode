@@ -2,13 +2,14 @@ class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
         if nums is None:
             return 0
-            
-        ord_nums = sorted(nums)
+
+        nums.sort()    
+        # ord_nums = sorted(nums)
         res = 0
-        left_pointer, right_pointer = 0, len(ord_nums) - 1
+        left_pointer, right_pointer = 0, len(nums) - 1
 
         while left_pointer < right_pointer:
-            cal_num = ord_nums[left_pointer] + ord_nums[right_pointer]
+            cal_num = nums[left_pointer] + nums[right_pointer]
             if cal_num == k:
                 res += 1
                 left_pointer += 1
