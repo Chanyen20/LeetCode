@@ -1,15 +1,15 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        water_container = 0
-        left_pointer, right_pointer = 0, len(height) - 1
+        maxWater = 0
+        left, right = 0, len(height) - 1
 
-        while left_pointer < right_pointer:
-            bottleneck_height = min(height[left_pointer], height[right_pointer])
-            water_container = max(water_container, (right_pointer - left_pointer) * bottleneck_height)
-
-            if height[left_pointer] < height[right_pointer]:
-                left_pointer += 1
+        while left < right:
+            width = right - left
+            maxWater = max(maxWater, min(height[left], height[right]) * width)
+            
+            if height[right] < height[left]:
+                right -= 1
             else:
-                right_pointer -= 1
-                
-        return water_container
+                left += 1
+        
+        return maxWater
