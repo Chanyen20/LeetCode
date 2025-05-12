@@ -1,22 +1,17 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
-        # if nums is None:
-        #     return 0
+        nums.sort()
+        pair_number = 0
+        left, right = 0, len(nums) - 1
 
-        nums.sort()    
-        # ord_nums = sorted(nums)
-        res = 0
-        left_pointer, right_pointer = 0, len(nums) - 1
-
-        while left_pointer < right_pointer:
-            cal_num = nums[left_pointer] + nums[right_pointer]
-            if cal_num == k:
-                res += 1
-                left_pointer += 1
-                right_pointer -= 1
-            elif cal_num < k:
-                left_pointer += 1
-            else:
-                right_pointer -= 1
-
-        return res
+        while left < right:
+            if nums[left] + nums[right] == k:
+                pair_number += 1
+                left += 1
+                right -= 1
+            elif nums[left] + nums[right] < k:
+                left += 1
+            else: 
+                right -= 1
+        
+        return pair_number
