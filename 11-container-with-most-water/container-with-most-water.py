@@ -1,15 +1,15 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        maxWater = 0
+        maxContainer = 0
         left, right = 0, len(height) - 1
 
         while left < right:
-            width = right - left
-            maxWater = max(maxWater, min(height[left], height[right]) * width)
-            
-            if height[right] < height[left]:
-                right -= 1
-            else:
+            currnet_height = min(height[left], height[right])
+            maxContainer = max(maxContainer, (right - left) * currnet_height)
+            if height[left] < height[right]:
                 left += 1
+            else:
+                right -= 1
+
+        return maxContainer
         
-        return maxWater
