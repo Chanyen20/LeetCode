@@ -1,17 +1,20 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
         nums.sort()
-        pair_number = 0
+
         left, right = 0, len(nums) - 1
+        res = 0
 
         while left < right:
-            if nums[left] + nums[right] == k:
-                pair_number += 1
-                left += 1
+            current_sum =  nums[left] + nums[right]
+    
+            if current_sum == k:
+                res += 1
+                left += 1 
                 right -= 1
-            elif nums[left] + nums[right] < k:
+            elif current_sum < k:
                 left += 1
-            else: 
+            else:
                 right -= 1
-        
-        return pair_number
+
+        return res 
