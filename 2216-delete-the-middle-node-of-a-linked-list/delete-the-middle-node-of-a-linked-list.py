@@ -5,23 +5,27 @@
 #         self.next = next
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-
+        # fast 每次走 2 步
+        # slow 每次走 1 步
         if head is None or head.next is None:
             return None
 
-        total_node = 0
+        slow = head
+        fast = head
+        prev = None  # 記錄 slow 的前一個節點
 
-        node = head
-        while node is not None:
-            total_node += 1
-            node = node.next
-        
-        prev = head   
-        for _ in range(total_node // 2 - 1):
-            prev = prev.next
-            
-        prev.next = prev.next.next
+        while fast and fast.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+
+        # 此時 slow 指向中間節點，prev 是它的前一個
+        prev.next = slow.next  # 刪除中間節點
 
         return head
+
+
+
+
 # Time: O(n)
 # Space: O(1)
