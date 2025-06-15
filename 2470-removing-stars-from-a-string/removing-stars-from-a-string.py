@@ -10,6 +10,8 @@ class Solution:
             
         return ''.join(res)
 
+# Time: O(n)
+# Space: O(n)
 
 
 
