@@ -19,7 +19,8 @@ class Solution:
         slow.next = slow.next.next
 
         return head
-
+# time: O(n)
+# space: O(1)
 
 
 
