@@ -15,6 +15,9 @@ class Solution:
             curr = next_node
         
         return prev
+    
+# time: O(n)
+# space: O(1)
 
 
        
