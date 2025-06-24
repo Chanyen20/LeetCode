@@ -11,5 +11,8 @@ class Solution:
             else:
                 candies[i] = True
         return candies
+
+# time complexity: O(n)
+# space complexity: O(1) if in-place modification is allowed
         
         
