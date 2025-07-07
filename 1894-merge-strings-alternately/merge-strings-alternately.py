@@ -1,17 +1,23 @@
 class Solution:
     def mergeAlternately(self, word1: str, word2: str) -> str:
-        res = ""
-        length = max(len(word1), len(word2))
+        result = [] 
+        i = 0
+        j = 0
 
-        for i in range(length):
-            if i < len(word1):
-                res = res + word1[i]
-            
-            if i < len(word2):
-                res = res + word2[i]
-        return res
+        while i < len(word1) and j < len(word2):
+            result.append(word1[i])
+            result.append(word2[j])
 
-# time complexity: O(n) n <= max(len(word1), len(word2))
-# space complexity : O(n) n <= len(word1)+ len(word2))
-            
+            i += 1
+            j +=1 
+        
+        # Append the remaining character of the word
+        result.append(word1[i:])
+        result.append(word2[j:])
+
+        return ''.join(result)
+
+# time complexity: O(n + m)  ; n = len(word1), m = len(word2)
+# space complexity: O(n + m)  ; n = len(word1), m = len(word2)
+
         
