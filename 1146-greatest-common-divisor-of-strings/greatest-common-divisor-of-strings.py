@@ -1,4 +1,4 @@
-import math
+# import math
 class Solution:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
         shortest_len = math.gcd(len(str1), len(str2))
