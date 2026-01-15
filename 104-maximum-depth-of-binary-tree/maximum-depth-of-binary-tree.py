@@ -5,20 +5,23 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if not root:
-            return 0
-        self.res = 0
-        self.helper(root, cnt = 0)
-        return self.res
-        
-    def helper(self, node, cnt):
-        if not node:
-            return
-        cnt += 1
-        self.res = max(self.res, cnt)
-        self.helper(node.left, cnt)
-        self.helper(node.right, cnt)
+        self.max_depth = 0
+        self.helper(root, 1)
 
+        return self.max_depth
+
+    
+    def helper(self, node, depth):
+        if not node:
+            return None
         
+        if not node.left and not node.right:
+            self.max_depth = max(self.max_depth, depth)
+        
+        self.helper(node.left, depth + 1)
+        self.helper(node.right, depth + 1)
+
+
         
