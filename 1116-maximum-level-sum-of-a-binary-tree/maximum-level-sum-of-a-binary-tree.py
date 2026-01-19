@@ -34,9 +34,6 @@ class Solution:
             if level_sum > max_sum:
                 max_sum = level_sum
                 max_sum_level = curr_level
-            
-            
-
         
         return max_sum_level
 
