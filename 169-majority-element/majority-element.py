@@ -1,12 +1,14 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        seen = dict()
+        tempt = None
+        cnt = 0
 
         for num in nums:
-            if num in seen:
-                seen[num] += 1
-            else:
-                seen[num] = 1
+            if cnt == 0:
+                tempt = num
             
-        return max(seen, key=seen.get)
+            cnt += 1 if num == tempt else -1
+        
+
+        return tempt
         
