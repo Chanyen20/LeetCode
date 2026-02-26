@@ -1,29 +1,20 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        seen = []
+        valid_mapping = {
+            ")": "(", 
+            "]": "[", 
+            "}": "{"
+        }
+        stack = []
 
-        for ele in s:
-            if ele == ')':
-                if seen and seen.pop() == '(':
-                    continue
-                else:
-                    return False
-            elif ele == '}':
-                if seen and seen.pop() == '{':
-                    continue
-                else:
-                    return False
-            elif ele == ']':
-                if seen and seen.pop() == '[':
-                    continue
-                else:
-                    return False
+        for char in s:
+            if char not in valid_mapping:
+                stack.append(char)
             else:
-                seen.append(ele)
+                if not stack or valid_mapping[char] != stack.pop():
+                    return False
 
-        if not seen:
-            return True
-        else:
-            return False
+        
+        return not stack
 
         
