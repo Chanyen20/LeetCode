@@ -3,24 +3,19 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
+        p1, p2 = m - 1, n - 1
+        pointer = len(nums1) - 1
 
-        pointer1 = m - 1
-        pointer2 = n - 1
-
-        curr_pointer = m + n - 1
-
-        while pointer2 >= 0:
-
-            if pointer1 >= 0 and nums1[pointer1] > nums2[pointer2]:
-                nums1[curr_pointer] = nums1[pointer1]
-                pointer1 -= 1
+        while p2 >= 0:
+            if p1 >= 0 and nums1[p1] >= nums2[p2]:
+                nums1[pointer] = nums1[p1]
+                p1 -= 1
             else:
-                nums1[curr_pointer] = nums2[pointer2]
-                pointer2 -= 1
-            
-            curr_pointer -= 1
+                nums1[pointer] = nums2[p2]
+                p2 -= 1
+            pointer -= 1
+    
 
-        
-        
-        
-        
+
+
+            
