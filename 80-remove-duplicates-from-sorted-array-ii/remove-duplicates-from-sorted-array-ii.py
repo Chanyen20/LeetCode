@@ -1,22 +1,15 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        duplicate_cnt = 1
-        curr_pointer = 0   # slow pointer
+        if len(nums) <= 2:
+            return len(nums)
 
-        for i in range(1, len(nums)):
-            if nums[i] == nums[curr_pointer] and duplicate_cnt == 2:
-                continue
+        slow = 2
 
-            if nums[i] == nums[curr_pointer] and duplicate_cnt < 2:
-                duplicate_cnt += 1
-                nums[curr_pointer + 1] = nums[i]
-                curr_pointer += 1
-            else:
-                nums[curr_pointer + 1] = nums[i]
-                curr_pointer += 1
-                duplicate_cnt = 1
+        for fast in range(2, len(nums)):
+            if nums[fast] != nums[slow - 2]:
+                nums[slow] = nums[fast]
+                slow += 1
         
-        return curr_pointer + 1
+        return slow
 
-
-
+        
