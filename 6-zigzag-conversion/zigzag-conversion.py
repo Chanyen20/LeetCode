@@ -2,20 +2,34 @@ class Solution:
     def convert(self, s: str, numRows: int) -> str:
         if numRows == 1 or numRows >= len(s):
             return s
-            
-        word_row = [""] * numRows
+        res = [[] for _ in range(numRows)]
 
-        pointer = 0
+        pointer_row = 0
         forward = True
-        for i in range(len(s)):
-            word_row[pointer] += s[i]
+
+        for char in s:
+            res[pointer_row].append(char)
 
             if forward:
-                pointer += 1
-                if pointer == numRows - 1:
+                if pointer_row + 1 == numRows:
                     forward = False
+                    pointer_row -= 1
+                else:
+                    pointer_row += 1
             else:
-                pointer -= 1
-                if pointer == 0:
+                if pointer_row - 1 == -1:
                     forward = True
-        return ''.join(word_row)
+                    pointer_row += 1
+                else:
+                    pointer_row -= 1
+        
+        for i in range(len(res)):
+            res[i] = ''.join(res[i])
+        
+        return ''.join(res)
+            
+            
+
+
+
+        
