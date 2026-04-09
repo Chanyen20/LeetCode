@@ -1,17 +1,11 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        if not s:
-            return True
-        s_pointer = 0
+        i, j = 0, 0
 
-        for t_char in t:
-            if s[s_pointer] == t_char:
-                s_pointer += 1
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i += 1
             
-            if s_pointer == len(s):
-                return True
+            j += 1
         
-        return False
-
-
-        
+        return i == len(s)
