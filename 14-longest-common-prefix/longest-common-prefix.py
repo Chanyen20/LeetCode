@@ -3,16 +3,16 @@ class Solution:
         if not strs:
             return ""
         
-        strs_order = sorted(strs)
+        for i in range(len(strs[0])):
+            char = strs[0][i]
 
-        first = strs_order[0]
-        last =  strs_order[-1]
-        length = min(len(first), len(last))
-        for i in range(length):
-            if first[i] != last[i]:
-                return first[:i]
-        
-        return first
+            for j in range(1, len(strs)):
+                if i == len(strs[j]) or strs[j][i] != char:
+                    return strs[0][:i]
+                
+            
+        return strs[0]
 
+    
 
         
